@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('index') }}" method="post">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <table class="table table-hover">
+                <thread>
+                    <tr>
+                        <th>Stock Symbol</th>
+                        <th>Shares Owned</th>
+                        <th>Current Price</th>
+                        <th>Total Value</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    {% for stock in port %}
+                        <tr>
+                            {% for info in stock %}
+                                <td>{{info}}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h2>Funds</h2>
+            <table class="table table-hover">
+                <thread>
+                    <tr>
+                        <th>Available Cash</th>
+                        <th>Grand Total</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr>
+                        <td>{{cash}}</td>
+                        <td>{{total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}
